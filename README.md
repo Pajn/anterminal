@@ -1,23 +1,23 @@
-# React Typescript boilerplate
+# Anterminal
+An experiment to bring the terminal into the current century.
+Today we essentially emulate vt100, a terminal released in 1978. At that time, text were the
+common tongue between programs and systems. Today we're more into JSON.
 
-## Commands
-- `npm start` - Starts a dev server on <http://localhost:8080> with hot loading
-- `npm run build` - Does a production build in dist
-- `npm run lint` - Runs the linter to check for style issues
-- `npm run typescript` - Runs typescript to check for typing issues
-- `npm run build_dev` - Does a development build but outputs to dist
+Anterminal is built on web technologies and is planned as an electron application, however currently
+it runs in the browser which means that no things that require system access can be implemented.
 
-## Included packages
-- React 0.14
-- React Router 1.0
+## Exampels
+### Basic math
+`add 3 5`
 
-## Build steps
-### Development
-1. Compiles with Typescript to ES6
-1. Compiles with Babel to ES5
-1. Adds react-hot for hot loading of components
+### Pipe commands
+`add 3 5 | multiply 2`
 
-### Production
-1. Compiles with Typescript to ES6
-1. Compiles with Babel to ES5
-1. Minifies with UglifyJS
+### Piped value as positioned argument
+`add 3 5 | subtract _ 2`
+
+### Pipe arrays to commends operating on values
+`range 10 | multiply 2`
+
+### Pipe to commands that specifies custom output format
+`range 200 | log | multiply 2 | round | chart`
