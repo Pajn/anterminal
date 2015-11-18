@@ -5,6 +5,7 @@ common tongue between programs and systems. Today we're more into JSON.
 
 Anterminal is built on web technologies and is planned as an electron application, however currently
 it runs in the browser which means that no things that require system access can be implemented.
+But this also means that it can be run from [gh-pages](https://pajn.github.io/anterminal/).
 
 ## Exampels
 ### Basic math
