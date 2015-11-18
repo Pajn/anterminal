@@ -41,6 +41,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
       test: /\.js$/,
+      mangle: false,
     }),
   ];
 }
