@@ -1,6 +1,6 @@
 var config = {
   entry: {
-    js: './app/index',
+    js: ['babel-polyfill', './app/index'],
     html: './app/index.html',
   },
   output: {
@@ -17,7 +17,7 @@ var config = {
           'react-hot',
           'babel?' + JSON.stringify({
             presets: ["react", "es2015", "stage-1"],
-            plugins: ['transform-runtime'],
+            // plugins: ['transform-runtime'],
           }),
          'ts',
        ],
@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
       test: /\.js$/,
-      mangle: false,
+      // mangle: false,
     }),
   ];
 }
