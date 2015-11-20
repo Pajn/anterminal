@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {StatefulComponent} from '../lib/flux/stateful-component';
-import {resultStore} from '../lib/stores/result';
+import {stateful} from '../lib/redux/helpers';
 import {Result} from './result';
-
-// Hack to workaround unused React bug in tslint
-export const _ = React;
 
 const styles = Object.freeze({
   container: {
@@ -21,18 +17,14 @@ const styles = Object.freeze({
   },
 });
 
-export class ResultList extends StatefulComponent<{}, {results: any[]}> {
-  stores = [resultStore];
-
-  getState() {
-    return {
-      results: resultStore.results,
-    };
-  }
+@stateful(state => ({results: state.results}))
+export class ResultList extends React.Component<{}, {results: any[]}> {
 
   render() {
-    return <div style={styles.container}>
-      {this.state.results.map((result, index) => <Result result={result} key={index} />)}
-    </div>;
+    return (
+      <div style={styles.container}>
+        {this.state.results.map((result, index) => <Result result={result} key={index} />)}
+      </div>
+    );
   }
 }

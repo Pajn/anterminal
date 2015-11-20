@@ -1,16 +1,15 @@
-import {actions} from './flux/actions';
-import {dispatcher} from './flux/dispatcher';
-const {commandStore} = require('./stores/command');
-const {resultStore} = require('./stores/result');
+import {actions} from './redux/actions';
+import {dispatch} from './redux/helpers';
+import {store} from './redux/store';
 const {parse} = require('./grammar');
 
 export function runCommand(command: string) {
-  dispatcher.dispatch(actions.runCommand, {command});
+  dispatch(actions.runCommand, {command});
 
   const commandLine = parse(command);
   const commands = commandLine.commandList.map(c => ({
     written: c,
-    registered: commandStore.commands.find(r => r.name === c.commandName),
+    registered: store.getState().commands.find(r => r.name === c.commandName),
   }));
 
   for (let {registered} of commands) {
@@ -23,7 +22,7 @@ export function runCommand(command: string) {
   let pipeValue;
 
   if (commandLine.continueToken) {
-    pipeValue = resultStore.results[0];
+    pipeValue = store.getState().results[0];
   }
 
   for (let {registered, written} of commands) {
@@ -46,5 +45,5 @@ export function runCommand(command: string) {
     pipeValue = registered.function.apply(null, args.map(({value}) => value));
   }
 
-  dispatcher.dispatch(actions.newResult, {result: pipeValue});
+  dispatch(actions.newResult, {result: pipeValue});
 }

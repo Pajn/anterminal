@@ -10,8 +10,10 @@ const styles = Object.freeze({
 export class Result extends React.Component<{result: any, key?}, {}> {
 
   render() {
-    return <Card style={styles.card}>
-      {this.props.result}
-    </Card>;
+    return (
+      <Card style={styles.card}>
+        {this.props.result}
+      </Card>
+    );
   }
 }

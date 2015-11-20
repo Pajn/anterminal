@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 
 import {Autocomplete, Collection} from '../apis/command';
-import {actions} from '../flux/actions';
-import {dispatcher} from '../flux/dispatcher';
+import {actions} from '../redux/actions';
+import {dispatch} from '../redux/helpers';
 
 export function prefix(name: string): ClassDecorator {
   return (target: Function) => { // : Function | void
@@ -16,7 +16,7 @@ export function command(): MethodDecorator {
     descriptor: TypedPropertyDescriptor<Function>) => {
       if (typeof propertyKey === 'string') {
         const args = Reflect.getMetadata('design:paramtypes', target, propertyKey);
-        dispatcher.dispatch(actions.registerCommand, {
+        dispatch(actions.registerCommand, {
           name: propertyKey,
           function: descriptor.value,
           arguments: args,

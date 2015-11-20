@@ -28,10 +28,12 @@ const styles = Object.freeze({
 class App extends React.Component<{}, {}> {
 
   render() {
-    return <div style={styles.container}>
-      <Input />
-      <ResultList />
-    </div>;
+    return (
+      <div style={styles.container}>
+        <Input />
+        <ResultList />
+      </div>
+    );
   }
 }
 

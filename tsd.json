@@ -11,14 +11,14 @@
     "react-dom/react-dom.d.ts": {
       "commit": "0dd29bf8253536ae24e61c109524e924ea510046"
     },
-    "flux/flux.d.ts": {
-      "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
-    },
     "rx/rx.d.ts": {
       "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
     },
     "rx/rx-lite.d.ts": {
       "commit": "fc341765ebbb04b7109981a25dced01f488f4d94"
+    },
+    "redux/redux.d.ts": {
+      "commit": "16134c168d021351acb1673ee9659644fc58c424"
     }
   }
 }
