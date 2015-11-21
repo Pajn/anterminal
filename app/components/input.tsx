@@ -17,7 +17,7 @@ type State = {historyIndex: number, history?: any[], value: string};
 @stateful(state => ({history: state.history}))
 export class Input extends React.Component<{}, State> {
 
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {historyIndex: -1, value: ''};
