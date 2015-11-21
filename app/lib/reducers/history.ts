@@ -4,5 +4,5 @@ import {createReducer} from '../redux/helpers';
 export type HistoryState = string[];
 
 export const history = createReducer<HistoryState>([])
-  .when(actions.runCommand, (state, {command}) => [...state, command])
+  .when(actions.runCommand, (state, {command}) => [command, ...state])
   .build();
