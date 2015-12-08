@@ -1,8 +1,8 @@
+import {createReducer} from 'decorated-redux';
 import {actions} from '../redux/actions';
-import {createReducer} from '../redux/helpers';
 
-export type ResultState = any[];
+export type ResultState = {error: boolean, result}[];
 
 export const results = createReducer([])
-  .when(actions.newResult, (state, {result}) => [result, ...state])
+  .when(actions.newResult, (state, result) => [result, ...state])
   .build();

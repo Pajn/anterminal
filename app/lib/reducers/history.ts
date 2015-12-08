@@ -1,5 +1,5 @@
+import {createReducer} from 'decorated-redux';
 import {actions} from '../redux/actions';
-import {createReducer} from '../redux/helpers';
 
 export type HistoryState = string[];
 
