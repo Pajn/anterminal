@@ -1,16 +1,9 @@
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
 import {runCommand} from '../lib/runner';
-import {stateful} from '../lib/redux/helpers';
+import {stateful} from '../lib/redux/store';
 
-const styles = Object.freeze({
-  container: {
-    padding: 16,
-  },
-  input: {
-    width: 600,
-  },
-});
+const styles = require('./input.scss');
 
 type State = {historyIndex: number, history?: any[], value: string};
 
@@ -24,10 +17,13 @@ export class Input extends React.Component<{}, State> {
   }
 
   render() {
-    return <div style={styles.container}>
-      <input ref='input' onChange={this.onChange.bind(this)} onKeyDown={this.runCommand.bind(this)}
-             style={styles.input} value={this.state.value} />
-    </div>;
+    return (
+      <div className={styles.container}>
+        <input ref='input' className={styles.input}
+               onChange={this.onChange.bind(this)} onKeyDown={this.runCommand.bind(this)}
+               value={this.state.value} />
+      </div>
+    );
   }
 
   private moveCursorToEnd() {

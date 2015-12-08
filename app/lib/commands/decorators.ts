@@ -2,7 +2,7 @@ import 'reflect-metadata';
 
 import {Autocomplete, Collection} from '../apis/command';
 import {actions} from '../redux/actions';
-import {dispatch} from '../redux/helpers';
+import {dispatch} from '../redux/store';
 
 export function prefix(name: string): ClassDecorator {
   return (target: Function) => { // : Function | void

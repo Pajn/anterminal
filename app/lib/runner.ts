@@ -1,5 +1,5 @@
 import {actions} from './redux/actions';
-import {dispatch} from './redux/helpers';
+import {dispatch} from './redux/store';
 import {store} from './redux/store';
 const {parse} = require('./grammar');
 
@@ -12,9 +12,9 @@ export function runCommand(command: string) {
     registered: store.getState().commands.find(r => r.name === c.commandName),
   }));
 
-  for (let {registered} of commands) {
+  for (let {registered, written} of commands) {
     if (!registered) {
-      console.log('unkown command', command);
+      dispatch(actions.newResult, {error: true, result: `Unkown command "${written.commandName}"`});
       return;
     }
   }
@@ -45,5 +45,5 @@ export function runCommand(command: string) {
     pipeValue = registered.function.apply(null, args.map(({value}) => value));
   }
 
-  dispatch(actions.newResult, {result: pipeValue});
+  dispatch(actions.newResult, {error: false, result: pipeValue});
 }

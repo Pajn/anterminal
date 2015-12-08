@@ -1,3 +1,5 @@
+const production = process.env.NODE_ENV === 'production';
+
 var config = {
   entry: {
     js: ['babel-polyfill', './app/index'],
@@ -7,7 +9,7 @@ var config = {
     path: __dirname + '/dist',
     filename: '[name].js',
   },
-  devtools: 'sourcemaps',
+  devtool: 'source-map',
   module: {
     loaders: [
       {
@@ -17,7 +19,7 @@ var config = {
           'react-hot',
           'babel?' + JSON.stringify({
             presets: ["react", "es2015", "stage-1"],
-            // plugins: ['transform-runtime'],
+            plugins: ['jsx-tagclass'],
           }),
          'ts',
        ],
@@ -25,6 +27,25 @@ var config = {
       {
         test: /\.html$/,
         loader: "file?name=[name].[ext]",
+      },
+      {
+        test: /\.scss$/,
+        exclude: /\.global\.scss$/,
+        loaders: [
+          'style',
+          'css?modules',
+          'resolve-url',
+          'sass',
+        ],
+      },
+      {
+        test: /\.global\.scss$/,
+        loaders: [
+          'style',
+          'css',
+          'resolve-url',
+          'sass',
+        ],
       },
     ],
   },
@@ -34,7 +55,7 @@ var config = {
   },
 };
 
-if (process.env.NODE_ENV === 'production') {
+if (production) {
   var webpack = require('webpack');
 
   config.plugins = [

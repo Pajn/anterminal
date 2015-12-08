@@ -1,0 +1,15 @@
+.Card {
+  box-sizing: border-box;
+  width: 600px;
+
+  &.error {
+    color: white;
+    background-color: rgb(170, 90, 90);
+  }
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

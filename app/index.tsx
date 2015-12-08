@@ -10,6 +10,8 @@ import './lib/commands/math';
 import './lib/commands/renders';
 import './lib/commands/utils';
 
+window['React'] = React;
+
 const styles = Object.freeze({
   container: {
     display: 'flex',
