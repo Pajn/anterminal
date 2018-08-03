@@ -41,7 +41,7 @@
     "babel-polyfill": "^6.1.19",
     "babel-runtime": "^6.1.18",
     "react": "^0.14.2",
-    "react-dom": "^0.14.2",
+    "react-dom": "^16.0.1",
     "redux": "^3.0.4",
     "reflect-metadata": "^0.1.2",
     "rx": "^4.0.7"
